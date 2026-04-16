@@ -1,183 +1,104 @@
-# 📊 E-Commerce Sales Analysis Project
+﻿# E-Commerce Sales Analysis Project
 
-## 🚀 Project Overview
+## Project Overview
 
-This project focuses on performing a **complete data analysis pipeline** on an e-commerce dataset using Python. It combines **data cleaning, exploratory data analysis (EDA), statistical testing, and machine learning models** to extract meaningful insights and predict business outcomes.
+This project performs a complete data analysis pipeline on an e-commerce dataset using Python. It includes data cleaning, exploratory data analysis (EDA), statistical testing, and machine learning models to extract business insights and predict sales performance.
 
-The goal is to understand **sales patterns, customer behavior, and key factors influencing revenue**, while also building predictive models for better decision-making.
+## Technologies Used
 
----
+- Python
+- NumPy
+- Pandas
+- Matplotlib
+- Seaborn
+- SciPy
+- scikit-learn
 
-## 🛠️ Technologies Used
+## Dataset
 
-* **Python**
-* **NumPy & Pandas** → Data manipulation and preprocessing
-* **Matplotlib & Seaborn** → Data visualization
-* **SciPy** → Statistical testing
-* **Scikit-learn** → Machine learning models
-
----
-
-## 📂 Dataset
-
-The dataset used:
+The dataset file used for this project is:
 `ecommerce_sales_analysis.csv`
 
-It contains information such as:
+Key columns include:
 
-* Order Date
-* Sales
-* Quantity
-* Profit
-* Category
-* Region
+- Order Date
+- Sales
+- Quantity
+- Profit
+- Category
+- Region
 
----
+## Project Workflow
 
-## 🔄 Project Workflow
+### 1. Data Loading
 
-### 1️⃣ Data Loading
+- Read the dataset using Pandas
+- Display the first rows and dataset columns
 
-* Imported dataset using Pandas
-* Displayed initial structure and column details
+### 2. Data Cleaning
 
----
+- Removed duplicate records
+- Filled missing numeric values using median imputation
+- Converted the order date column to a datetime format
 
-### 2️⃣ Data Cleaning
+### 3. Feature Engineering
 
-* Removed duplicate records
-* Handled missing values using median imputation
-* Converted date column into proper datetime format
+- Extracted the month from the order date for time-based analysis
 
----
+### 4. Exploratory Data Analysis (EDA)
 
-### 3️⃣ Feature Engineering
+Performed several analyses and visualizations, including:
 
-* Extracted **Month** from Order Date for time-based analysis
+- Monthly sales trend line plot
+- Sales distribution histogram
+- Regression plot for quantity vs sales
+- Correlation heatmap for numerical features
+- Pairplot for relationship exploration
+- Box plot for sales distribution by region
+- Bar chart for sales by category
+- Scatter plot for profit vs sales
 
----
+### 5. Outlier Treatment
 
-### 4️⃣ Exploratory Data Analysis (EDA)
+- Used the interquartile range (IQR) method to identify and remove extreme sales values
+- Improved model reliability and data quality
 
-A variety of visualizations were created to understand the dataset:
+### 6. Statistical Analysis
 
-#### 📈 Line Plot
+- Checked data distribution with the Shapiro-Wilk test
+- Compared group means using t-tests
+- Examined relationships between categorical variables with chi-square tests
 
-* Shows **monthly sales trends**
-* Helps identify seasonality patterns
+### 7. Machine Learning Models
 
-#### 📊 Histogram
+#### Linear Regression
 
-* Displays distribution of sales values
-* Helps detect skewness and spread
+- Predicted sales using features such as quantity and profit
+- Evaluated model performance with mean squared error (MSE)
 
-#### 📉 Regression Plot
+#### Logistic Regression
 
-* Shows relationship between **Quantity and Sales**
+- Created a high-sales classification label
+- Predicted whether a sale value is above the median
+- Evaluated performance with accuracy and classification metrics
 
-#### 🔥 Correlation Heatmap
+## Key Insights
 
-* Identifies relationships between numerical variables
+- Sales vary by month, showing seasonal patterns
+- Quantity and profit have a strong influence on sales
+- Some product categories and regions contribute more revenue than others
+- Statistical analysis confirms relationships between key factors
+- Predictive models help forecast sales behavior
 
-#### 🔗 Pairplot
+## How to Run the Project
 
-* Visualizes pairwise relationships between key variables
-* Useful for detecting patterns and clusters
-
-#### 📦 Box Plot
-
-* Shows **sales variation across regions**
-* Helps detect outliers
-
-#### 📊 Bar Chart
-
-* Displays total sales by category
-
-#### ⚪ Pie Chart
-
-* Shows category distribution in percentage
-
-#### 📍 Scatter Plot
-
-* Displays relationship between **Profit and Sales**
-
----
-
-### 5️⃣ Outlier Removal
-
-* Used **IQR (Interquartile Range)** method
-* Removed extreme values in Sales column
-* Improved model accuracy and data reliability
-
----
-
-### 6️⃣ Statistical Analysis
-
-#### 🔬 Shapiro Test
-
-* Tests if data follows normal distribution
-
-#### 📊 T-Test
-
-* Compares sales between two regions
-
-#### 🔗 Chi-Square Test
-
-* Examines relationship between Category and Region
-
----
-
-### 7️⃣ Machine Learning Models
-
-#### 📉 Linear Regression
-
-* Predicts **Sales** based on:
-  * Quantity
-  * Profit
-* Evaluated using **Mean Squared Error (MSE)**
-
----
-
-#### 📊 Logistic Regression
-
-* Created a classification variable: **High_Sales**
-* Predicts whether a sale is above median
-
-Evaluation metrics:
-
-* Accuracy Score
-* Classification Report
-
----
-
-## 📌 Key Insights
-
-* Sales trends vary across months indicating seasonal demand
-* Quantity and profit have strong influence on sales
-* Certain regions and categories contribute more to revenue
-* Statistical tests validate relationships between variables
-* Machine learning models can effectively predict sales behavior
-
----
-
-## 🎯 Project Outcomes
-
-* Developed a **complete data analysis pipeline**
-* Built both **regression and classification models**
-* Gained insights into business performance
-* Demonstrated real-world application of data science techniques
-
----
-
-## ▶️ How to Run the Project
-
-1. Install required libraries:
+1. Install dependencies:
 
 ```
 pip install numpy pandas matplotlib seaborn scipy scikit-learn
 ```
 
-2. Place the dataset file in the same directory
+2. Place `ecommerce_sales_analysis.csv` in the project folder
 
 3. Run the Python script:
 
@@ -185,239 +106,13 @@ pip install numpy pandas matplotlib seaborn scipy scikit-learn
 python CA2_PROJECT.py
 ```
 
----
+## Future Improvements
 
-## 📌 Future Improvements
+- Add advanced machine learning models such as Random Forest or XGBoost
+- Create a web interface or dashboard for results
+- Add time series forecasting
+- Expand feature engineering and model tuning
 
-* Add advanced models (Random Forest, XGBoost)
-* Deploy model using a web app
-* Perform time series forecasting
-* Improve feature engineering
+## Author
 
----
-
-## 👨‍💻 Author
-
-**Dhanush**
-
----
-
-## ⭐ Final Note
-
-This project demonstrates how raw data can be transformed into **actionable insights and predictive intelligence**, making it valuable for real-world business decision-making.
-
----# 📊 E-Commerce Sales Analysis Project
-
-## 🚀 Project Overview
-
-This project focuses on performing a **complete data analysis pipeline** on an e-commerce dataset using Python. It combines **data cleaning, exploratory data analysis (EDA), statistical testing, and machine learning models** to extract meaningful insights and predict business outcomes.
-
-The goal is to understand **sales patterns, customer behavior, and key factors influencing revenue**, while also building predictive models for better decision-making.
-
----
-
-## 🛠️ Technologies Used
-
-* **Python**
-* **NumPy & Pandas** → Data manipulation and preprocessing
-* **Matplotlib & Seaborn** → Data visualization
-* **SciPy** → Statistical testing
-* **Scikit-learn** → Machine learning models
-
----
-
-## 📂 Dataset
-
-The dataset used:
-`ecommerce_sales_analysis.csv`
-
-It contains information such as:
-
-* Order Date
-* Sales
-* Quantity
-* Profit
-* Category
-* Region
-
----
-
-## 🔄 Project Workflow
-
-### 1️⃣ Data Loading
-
-* Imported dataset using Pandas
-* Displayed initial structure and column details
-
----
-
-### 2️⃣ Data Cleaning
-
-* Removed duplicate records
-* Handled missing values using median imputation
-* Converted date column into proper datetime format
-
----
-
-### 3️⃣ Feature Engineering
-
-* Extracted **Month** from Order Date for time-based analysis
-
----
-
-### 4️⃣ Exploratory Data Analysis (EDA)
-
-A variety of visualizations were created to understand the dataset:
-
-#### 📈 Line Plot
-
-* Shows **monthly sales trends**
-* Helps identify seasonality patterns
-
-#### 📊 Histogram
-
-* Displays distribution of sales values
-* Helps detect skewness and spread
-
-#### 📉 Regression Plot
-
-* Shows relationship between **Quantity and Sales**
-
-#### 🔥 Correlation Heatmap
-
-* Identifies relationships between numerical variables
-
-#### 🔗 Pairplot
-
-* Visualizes pairwise relationships between key variables
-* Useful for detecting patterns and clusters
-
-#### 📦 Box Plot
-
-* Shows **sales variation across regions**
-* Helps detect outliers
-
-#### 📊 Bar Chart
-
-* Displays total sales by category
-
-#### ⚪ Pie Chart
-
-* Shows category distribution in percentage
-
-#### 📍 Scatter Plot
-
-* Displays relationship between **Profit and Sales**
-
----
-
-### 5️⃣ Outlier Removal
-
-* Used **IQR (Interquartile Range)** method
-* Removed extreme values in Sales column
-* Improved model accuracy and data reliability
-
----
-
-### 6️⃣ Statistical Analysis
-
-#### 🔬 Shapiro Test
-
-* Tests if data follows normal distribution
-
-#### 📊 T-Test
-
-* Compares sales between two regions
-
-#### 🔗 Chi-Square Test
-
-* Examines relationship between Category and Region
-
----
-
-### 7️⃣ Machine Learning Models
-
-#### 📉 Linear Regression
-
-* Predicts **Sales** based on:
-
-  * Quantity
-  * Profit
-* Evaluated using **Mean Squared Error (MSE)**
-
----
-
-#### 📊 Logistic Regression
-
-* Created a classification variable: **High_Sales**
-* Predicts whether a sale is above median
-
-Evaluation metrics:
-
-* Accuracy Score
-* Classification Report
-
----
-
-## 📌 Key Insights
-
-* Sales trends vary across months indicating seasonal demand
-* Quantity and profit have strong influence on sales
-* Certain regions and categories contribute more to revenue
-* Statistical tests validate relationships between variables
-* Machine learning models can effectively predict sales behavior
-
----
-
-## 🎯 Project Outcomes
-
-* Developed a **complete data analysis pipeline**
-* Built both **regression and classification models**
-* Gained insights into business performance
-* Demonstrated real-world application of data science techniques
-
----
-
-## ▶️ How to Run the Project
-
-1. Install required libraries:
-
-```
-pip install numpy pandas matplotlib seaborn scipy scikit-learn
-```
-
-2. Place the dataset file in the same directory
-
-3. Run the Python script:
-
-```
-python your_script_name.py
-```
-
----
-
-## 📌 Future Improvements
-
-* Add advanced models (Random Forest, XGBoost)
-* Deploy model using a web app
-* Perform time series forecasting
-* Improve feature engineering
-
----
-
-## 👨‍💻 Author
-
-**Dhanush**
-
----
-
-## ⭐ Final Note
-
-This project demonstrates how raw data can be transformed into **actionable insights and predictive intelligence**, making it valuable for real-world business decision-making.
-
----
-#   A n a l y s i s - o f - G l o b a l _ f i n a n c i a l _ m a r k e t s 
- 
- #   A n a l y s i s - o f - G l o b a l _ f i n a n c i a l _ m a r k e t s 
- 
- 
+Dhanush
