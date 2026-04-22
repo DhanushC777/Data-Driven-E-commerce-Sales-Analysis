@@ -1,4 +1,4 @@
-﻿# E-Commerce Sales Analysis Project
+﻿# Data Driven E-Commerce Sales Analysis Project
 
 ## Project Overview
 
@@ -39,7 +39,7 @@ Key columns include:
 
 - Removed duplicate records
 - Filled missing numeric values using median imputation
-- Converted the order date column to a datetime format
+- Converted the order date column to a datetime format.
 
 ### 3. Feature Engineering
 
@@ -57,6 +57,7 @@ Performed several analyses and visualizations, including:
 - Box plot for sales distribution by region
 - Bar chart for sales by category
 - Scatter plot for profit vs sales
+  
 
 ### 5. Outlier Treatment
 
@@ -75,12 +76,6 @@ Performed several analyses and visualizations, including:
 
 - Predicted sales using features such as quantity and profit
 - Evaluated model performance with mean squared error (MSE)
-
-#### Logistic Regression
-
-- Created a high-sales classification label
-- Predicted whether a sale value is above the median
-- Evaluated performance with accuracy and classification metrics
 
 ## Key Insights
 
