@@ -6,7 +6,7 @@ import seaborn as sns
 from scipy import stats
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, r2_score
 
 # Load data
 df = pd.read_csv("ecommerce_sales_analysis.csv")
@@ -18,7 +18,7 @@ print(df.columns)
 df.drop_duplicates(inplace=True)
 df.fillna(df.median(numeric_only=True), inplace=True)
 
-# Feature
+# Feature Engineering
 df['Order Date'] = pd.to_datetime(df['Order Date'], errors='coerce')
 df['Month'] = df['Order Date'].dt.month
 
@@ -26,7 +26,7 @@ df['Month'] = df['Order Date'].dt.month
 print(df.describe())
 print(df.corr(numeric_only=True))
 
-# Line plot
+# Line plot (Monthly Sales)
 monthly = df.groupby('Month')['Sales'].mean().reset_index()
 plt.figure()
 sns.lineplot(x='Month', y='Sales', data=monthly, marker='o')
@@ -84,27 +84,27 @@ plt.pie(counts, labels=counts.index, autopct='%1.1f%%')
 plt.title("Category Share")
 plt.show()
 
-# Outliers
+# Outlier Removal (IQR)
 Q1 = df['Sales'].quantile(0.25)
 Q3 = df['Sales'].quantile(0.75)
 IQR = Q3 - Q1
 df = df[(df['Sales'] >= Q1 - 1.5 * IQR) &
         (df['Sales'] <= Q3 + 1.5 * IQR)]
 
-# Stats tests
+# Statistical Tests
 sample = df['Sales'].sample(min(5000, len(df)))
-print("Shapiro:", stats.shapiro(sample)[1])
+print("Shapiro p-value:", stats.shapiro(sample)[1])
 
 regions = df['Region'].dropna().unique()
 if len(regions) >= 2:
     g1 = df[df['Region'] == regions[0]]['Sales']
     g2 = df[df['Region'] == regions[1]]['Sales']
-    print("T-test:", stats.ttest_ind(g1, g2)[1])
+    print("T-test p-value:", stats.ttest_ind(g1, g2)[1])
 
 cont = pd.crosstab(df['Category'], df['Region'])
-print("Chi-square:", stats.chi2_contingency(cont)[1])
+print("Chi-square p-value:", stats.chi2_contingency(cont)[1])
 
-# Linear Regression
+# Linear Regression Model
 X = df[['Quantity', 'Profit']]
 y = df['Sales']
 
@@ -116,4 +116,21 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 
 pred = model.predict(X_test)
+
+# Evaluation
 print("MSE:", mean_squared_error(y_test, pred))
+print("R2 Score:", r2_score(y_test, pred))
+
+#Actual vs Predicted Graph
+plt.figure()
+plt.scatter(y_test, pred)
+plt.xlabel("Actual Sales")
+plt.ylabel("Predicted Sales")
+plt.title("Actual vs Predicted Sales")
+
+# Perfect prediction line
+plt.plot([y_test.min(), y_test.max()],
+         [y_test.min(), y_test.max()],
+         linestyle='--')
+
+plt.show()
